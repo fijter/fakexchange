@@ -1,0 +1,18 @@
+[
+  {
+    "model": "exchange.Coin",
+    "pk": 1,
+    "fields": {
+      "symbol": "MIOTA",
+	  "price_in_usd": "0.27"
+    }
+  },
+  {
+    "model": "exchange.Coin",
+    "pk": 2,
+    "fields": {
+      "symbol": "BTC",
+	  "price_in_usd": "10100.00"
+    }
+  }
+]

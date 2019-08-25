@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="cover-heading">Deposit coins</h1>
+    <p class="lead">Get a deposit address to add coins to this exchange!</p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Your Balance</th>
+                <th>Deposit address</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for coin, balance in user.all_balances.items %}
+        <tr>
+            <td>{{coin.symbol}}</td>
+            <td>{{balance.balance}}</td>
+            <td><a href="{% url 'deposit-address' symbol=coin.symbol %}">Request one</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

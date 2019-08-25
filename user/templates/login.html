@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="cover-heading">Log in to your account</h1>
+<p class="lead">No fancy captcha's, no honeypots, just a form.</p>
+
+<div style="padding: 20px 0;">
+<form action="." method="POST">
+    {% if invalid %}<p><strong>Invalid username/password!</strong></p>{% endif %}
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-lg btn-secondary">Login</a>
+</form>
+</div>
+{% endblock %}

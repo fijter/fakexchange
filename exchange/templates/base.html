@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>FakeXChange</title>
+
+    <!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="/static/cover.css" rel="stylesheet">
+  </head>
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="masthead mb-auto">
+    <div class="inner">
+      <h3 class="masthead-brand">FakeXChange</h3>
+      <nav class="nav nav-masthead justify-content-center">
+        {% if user %}
+        <a class="nav-link" href="#">{{user.first_name|default:user.username}}</a>
+        <a class="nav-link {% if section == 'dashboard' %}active{% endif %}" href="{% url 'dashboard' %}">Dashboard</a>
+        <a class="nav-link {% if section == 'deposit' %}active{% endif %}" href="{% url 'deposit' %}">Deposit</a>
+        <a class="nav-link {% if section == 'withdraw' %}active{% endif %}" href="{% url 'withdraw' %}">Withdraw</a>
+        <a class="nav-link {% if section == 'history' %}active{% endif %}" href="{% url 'history' %}">History</a>
+        {% else %}
+        <a class="nav-link {% if section == 'home' %}active{% endif %}" href="{% url 'homepage' %}">Home</a>
+        <a class="nav-link {% if section == 'login' %}active{% endif %}" href="{% url 'login' %}">Login</a>
+        <a class="nav-link" href="#">Contact</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+
+  <main role="main" class="inner cover">
+    {% block content %}
+
+    {% endblock %}
+  </main>
+
+  <footer class="mastfoot mt-auto">
+    <div class="inner">
+      <p>This is not a real exchange, just a mere example to demonstrate IOTA Hub integration into a existing exchange</p>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

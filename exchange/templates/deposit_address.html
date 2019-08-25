@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="cover-heading">Deposit {{coin.symbol}}</h1>
+    <p class="lead">You can deposit to the following address. Only a single deposit is valid, don't send multiple transactions to this address.</p>
+    <blockquote>{{address}}</blockquote>
+
+{% endblock %}

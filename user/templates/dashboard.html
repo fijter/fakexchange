@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="cover-heading">Hey {{user.first_name|default:user.username}}!</h1>
+    <p class="lead">You can now start withdrawing and depositing.</p>
+    <p class="lead">
+      <a href="{% url 'deposit' %}" class="btn btn-lg btn-secondary">Deposit</a>
+      <a href="{% url 'withdraw' %}'" class="btn btn-lg btn-secondary">Withdraw</a>
+    </p>
+{% endblock %}

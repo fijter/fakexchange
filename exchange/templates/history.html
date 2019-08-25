@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="cover-heading">History</h1>
+    <p class="lead">See what happend to your account</p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Symbol</th>
+                <th>Amount</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for history in user.full_history %} 
+        <tr>
+            <td>{{history.created_at}}</td>
+            <td>{{history.readable_type}}</td>
+            <td>{{history.coin.symbol}}</td>
+            <td>{{history.amount}}</td>
+            <td>{% if history.coin.symbol == 'MIOTA' %}<a title="{{history.payment_address}}" href="https://devnet.thetangle.org/address/{{history.payment_address}}" target="_blank">{{history.payment_address|truncatechars:20}}</a>{% else %}{{history.payment_address}}{% endif %}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No history for you, yet!</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
