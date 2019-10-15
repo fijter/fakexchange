@@ -1,0 +1,8 @@
+fakexchange.qubic.tech
+
+root /var/www/fakexchange
+proxy / localhost:8000 {
+    transparent
+    except /static
+}
+

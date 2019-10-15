@@ -25,7 +25,7 @@ SECRET_KEY = '2so$84#84g$2gcjl(dpn47q9h#5%p982p1t)r#3+h5won-rn8z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['fakexchange.qubic.tech',]
 
 
 # Application definition

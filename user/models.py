@@ -44,7 +44,13 @@ class User(AbstractUser):
         '''
 
         if symbol in ('IOTA', 'MIOTA'):
-            return 'Not implemented yet!'
+            from exchange.iota import IOTA
+            api = IOTA()
+            addr = api.get_deposit_address(self.id)
+            if not addr:
+                return 'Unable to generate'
+            else:
+                return addr
         
         if symbol == 'BTC':
             return '1CFBdvaiZgZPTZERqnezAtDQJuGHKoHSzg'

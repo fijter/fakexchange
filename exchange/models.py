@@ -17,6 +17,7 @@ class CoinManager(models.Manager):
 class Coin(models.Model):
     symbol = models.CharField(max_length=50, unique=True)
     price_in_usd = models.DecimalField(max_digits=18, decimal_places=10)
+    last_hub_check = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return self.symbol   
@@ -38,22 +39,15 @@ class Coin(models.Model):
             # Next up we want to make sure the address hasn't been spent from yet
 
             expression = r'^[A-Z9]{90}$'
-            expression_nochecksum = r'^[A-Z9]{81}$'
 
             if re.match(expression, addr):
-                # The next 4 lines are a quirky workaround for the Python IOTA library in Python 3.7
-                # Needs to be resolved in that library first
-                try:
-                    import iota
-                except:
-                    pass
-
-                # Check the checksum using one of the IOTA Client libraries
-                from iota.types import Address
-                if not Address(addr).is_checksum_valid():
-                    return (False, "Invalid address, checksum not correct")
-
-                return (True, None)
+                
+                from exchange.iota import IOTA
+                api = IOTA()
+                if api.check_address(addr):
+                    return (True, None)
+                else:
+                    return (False, "Address can't be used, please make sure you provide a valid address with checksum that has not been spent from.")
 
             else:
                 if re.match(expression_nochecksum, addr):

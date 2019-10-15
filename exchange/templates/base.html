@@ -35,7 +35,7 @@
     <div class="inner">
       <h3 class="masthead-brand">FakeXChange</h3>
       <nav class="nav nav-masthead justify-content-center">
-        {% if user %}
+        {% if user.is_authenticated %}
         <a class="nav-link" href="#">{{user.first_name|default:user.username}}</a>
         <a class="nav-link {% if section == 'dashboard' %}active{% endif %}" href="{% url 'dashboard' %}">Dashboard</a>
         <a class="nav-link {% if section == 'deposit' %}active{% endif %}" href="{% url 'deposit' %}">Deposit</a>
