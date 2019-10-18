@@ -30,7 +30,7 @@ class Command(BaseCommand):
 
 
         for wr in WithdrawalRequest.objects.filter(processed=False, coin=coin):
-            status = api.withdraw('exchange', int(wr.amount), wr.address, validate_checksum=True, tag='FAKEXCHANGE')
+            status = api.withdraw('user-exchange', int(wr.amount), wr.address, validate_checksum=True, tag='FAKEXCHANGE')
 
             if not status:
                 print("Failed to withdraw")
