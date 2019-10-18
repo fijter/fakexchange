@@ -88,7 +88,7 @@ class IOTA(object):
         return ubalance
 
     def batch_to_exchange(self, batch):
-        self.create_user('exchange')
+        self.create_user('user-exchange')
         newbatch = []
         to_exchange = 0
 
