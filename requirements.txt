@@ -3,7 +3,7 @@ backcall==0.1.0
 certifi==2019.6.16
 cffi==1.12.3
 chardet==3.0.4
-cryptography==2.7
+cryptography==3.2
 decorator==4.4.0
 Django==2.2.4
 filters==1.3.2
